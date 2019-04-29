@@ -44,7 +44,11 @@ router.post('/edit', (req, res, next) => {
 
 //  GET '/books/details/:bookId'
 router.get('/details/:bookId', (req, res, next) => {
-  console.log('req.params', req.params);
+  const { bookId } = req.params;
+
+  Book.findById( bookId )
+    .then( (book) => res.render('book-details', { book } ))
+    .catch( (err) => console.log(err));
 });
 
 

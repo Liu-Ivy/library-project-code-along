@@ -2,9 +2,15 @@ var express = require('express');
 var router = express.Router();
 
 const booksRouter = require('./book');
+const authorRouter = require('./author')
 
 //  * '/books'
 router.use('/books', booksRouter);
+
+
+//  * '/authors'
+router.use('/authors', authorRouter);
+
 
 
 /* GET home page. */
