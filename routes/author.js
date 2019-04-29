@@ -11,7 +11,12 @@
 
   // POST '/authors/add'
   router.post('/add', (req, res, next) => {
-    
+    const { name, lastName, nationality, birthday, pictureUrl } = req.body;
+    const newAuthor = new Author({ name, lastName, nationality, birthday, pictureUrl });
+
+    newAuthor.save()
+      .then( (book) => res.redirect('/books') )
+      .catch( (err) => console.log(err));
   });
 
 

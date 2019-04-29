@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 const booksRouter = require('./book');
-const authorRouter = require('./author')
+const authorRouter = require('./author');
+const reviewsRouter = require('./reviews');
 
 //  * '/books'
 router.use('/books', booksRouter);
@@ -11,6 +12,8 @@ router.use('/books', booksRouter);
 //  * '/authors'
 router.use('/authors', authorRouter);
 
+//  * '/reviews'
+router.use('/reviews', reviewsRouter);
 
 
 /* GET home page. */

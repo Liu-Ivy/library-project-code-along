@@ -47,6 +47,7 @@ router.get('/details/:bookId', (req, res, next) => {
   const { bookId } = req.params;
 
   Book.findById( bookId )
+    .populate('author') // Checks the `authors` collection and populates `Author` ref
     .then( (book) => res.render('book-details', { book } ))
     .catch( (err) => console.log(err));
 });

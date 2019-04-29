@@ -1,6 +1,11 @@
 <h1>{{book.title}}</h1>
 
-<span>Written by: {{book.author}}</span>
+<span>Written by: 
+  {{#each book.author}}
+    {{this.name}} {{this.lastName}}
+  {{/each}}
+</span>
+
 
 <p>Summary: {{book.description}}</p>
 
@@ -9,3 +14,26 @@
 <a class="return-button"  href="/books">
   Return
 </a>
+
+<p>Add a review</p>
+
+<form action="/reviews/add?_id={{book._id}}" method="POST">
+  <label for="">User:</label>
+  <input type="text" name="user">
+
+  <label for="">Comments:</label>
+  <textarea type="text" name="comments"></textarea>
+
+  <button type="submit">ADD</button>
+  
+</form>
+
+<h2>Reviews</h2>
+{{#each book.reviews}}
+  
+  <div class="review-item">
+    <p>{{this.comments}}</p>
+    <span>{{this.user}}</span>
+  </div>
+  
+{{/each}}
